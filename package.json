@@ -10,7 +10,7 @@
   "scripts": {
     "build": "babel src --out-dir lib --copy-files",
     "prepublish": "npm run build",
-    "postinstall": "babel src --presets es2015 --out-dir lib",
+    "postinstall": "npm run build",
     "test": "mocha --compilers js:babel-register test -R spec -t 30000",
     "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --compilers js:babel-register -R spec test -s 1700 -t 30000"
   },
