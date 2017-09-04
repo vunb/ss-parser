@@ -4,3 +4,4 @@ systemDB
 coverage/*
 lib/*
 package-lock.json
+.vscode/
