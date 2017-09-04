@@ -41,4 +41,13 @@ describe('Should Parse Input', () => {
       done();
     });
   });
+
+  it('Should parse vietnamese script', (done) => {
+    parser.parseDirectory(`${__dirname}/fixtures/vietnameseDialog`, (err, result) => {
+      should.not.exist(err);
+      // console.log(result)
+      done();
+    });
+  })
+
 });
