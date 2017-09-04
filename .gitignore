@@ -3,3 +3,4 @@ systemDB
 *.log
 coverage/*
 lib/*
+package-lock.json
