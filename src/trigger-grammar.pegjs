@@ -36,7 +36,7 @@ starminmax
     { return { raw: `*(${min},${max})`, clean: `\\s*((?:[^\\s]){${min},${max}})` }; }
 
 string
-  = str:[a-zA-Z\u4e00-\u9fa5]+ { return { type: "string", val: str.join("")}; }
+  = str:[a-zA-Z\u0080-\u00FF\u0100-\u024F\u1E00-\u1EFF\u0300-\u036F]+ { return { type: "string", val: str.join("")}; }
 
 cleanedString
   = wsl:ws* string:[^|()\[\]\n\r*]+ wsr:ws* { return string.join(""); }
@@ -57,14 +57,14 @@ optionals
       const cleaned = [optional].concat(optionals).join("|");
       return {
         raw: `[${cleaned}]`,
-        clean: `(?:(?:)+(?:${cleaned})(?:)+|(?:)+)`
+        clean: `(?:(?:\\s|\\b)+(?:${cleaned})(?:\\s|\\b)+|(?:\\s|\\b)+)`
       };
     }
   / "[" ws* "*" ws* "]"
     {
       return {
         raw: "[*]",
-        clean: "(?:(?:(?:)+(?:.*)(?:)+|(?:)+)|)"
+        clean: "(?:(?:(?:\\s|\\b)+(?:.*)(?:\\s|\\b)+|(?:\\s|\\b)+)|)"
       };
     }
 
